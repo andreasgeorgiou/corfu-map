@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #222;
+  font-size: 13px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  overflow-y: auto;
+}
+/* Map styles. */
+#map-holder {
+  height: 80%;
+  width: 80%;
+  margin:auto;
+  top:10%;
+}
