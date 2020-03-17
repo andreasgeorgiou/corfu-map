@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #222;
+  font-size: 13px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  overflow-y: auto;
+}
+
+/* Map styles.*/ 
+#map-holder {
+  height: 92%;
+  width: 100%;
+  margin:auto;
+  top:0%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #000000;
+}

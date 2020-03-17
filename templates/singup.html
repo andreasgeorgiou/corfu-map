@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SingUp</title>
+
+<style>
+h3.ex{
+	margin-top: 11%;
+	margin-right: 4%;
+}
+p.ex1 {
+  margin-top: 0%;
+  margin-right: 7%;
+}
+p.ex2 {
+  margin-top: 0%;
+  margin-right: 5%;
+}
+p.ex3 {
+  margin-top: 0%;
+  margin-right: 9%;
+}
+</style>
+{% load static %}
+</head>
+<body>
+	<h3 class="ex" align="center"><img src="{% static 'accounts/cityclean.png' %}"  width="40" height="40">SmartClean Register </h3>
+	<form method="POST">
+		{% csrf_token %}
+		<p class="ex1" align="center"> Username:{{ form.username }}</p>
+		<p class="ex2" align="center"> Email: {{ form.email }}</p>
+		<p class="ex3" align="center"> Retype email:{{ form.email2 }}</p>
+		<p class="ex1" align="center"> Password:{{ form.password }}</p>
+		<p align="center"><input type="submit" value="Sing up" ></p>
+		<p align="center">{{form.errors}} </p>
+	</form>
+		
+
+
+</body>
+</html>
