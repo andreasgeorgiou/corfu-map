@@ -10,9 +10,9 @@ def test(request):
 @login_required
 def home(request):
 	if request.user.is_superuser:
-		return render(request, "home.html", {})
+		return render(request, "AdminHome.html", {})
 	elif request.user.is_authenticated: 
-		return render(request, "home2.html", {})
+		return render(request, "UsersHome.html", {})
 	
 
 
