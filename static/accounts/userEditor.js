@@ -44,12 +44,17 @@ function myMap(data) {
 		origin: new google.maps.Point(0,0), // origin
 		anchor: new google.maps.Point(0, 0) // anchor
 	};
+
+	var marker = [];
+	var markerId = [];
+
 	
+
 	for (i=0; i<data.length; i++){
 		
 		if (data[i].markertype == "1"){
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
-			var marker = new google.maps.Marker({
+			marker[i] = new google.maps.Marker({
 				data:[],
 				position: myLatLng,
 				map: myMap,
@@ -58,7 +63,7 @@ function myMap(data) {
 			});
 		}else if (data[i].markertype == "2"){
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
-			var marker = new google.maps.Marker({
+			marker[i] = new google.maps.Marker({
 				data:[],
 				position: myLatLng,
 				map: myMap,
@@ -67,7 +72,7 @@ function myMap(data) {
 			});
 		}else if (data[i].markertype == "3"){
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
-			var marker = new google.maps.Marker({
+		    marker[i] = new google.maps.Marker({
 				data:[],
 				position: myLatLng,
 				map: myMap,
@@ -75,9 +80,44 @@ function myMap(data) {
 				icon:icon3
 			});
 		}
-
+		markerId[i]=data[i].id;
 
 	} //end for
+
+	var contentString = new Array(data.length);
+	var infowindow = new Array(data.length);
+	for (var i = 0; i < data.length; i++) {
+		
+			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<form action="/action_page.php">'+
+            '<h6 align="center">Report</h6>'+
+            '<input type="checkbox" id="id" name="id" value="full">'+
+            '<label for="vehicle1"> Garbage is full</label><br>'+
+            '<input type="checkbox" id="vehicle2" name="vehicle2" value="broke">'+
+  			'<label for="vehicle2"> Garbage is Broke</label><br>'+
+            '<input type="checkbox" id="vehicle3" name="vehicle3" value="missing">'+
+  			'<label for="vehicle3"> Garbage is missing</label><br><br>'+
+  			'<input type="submit" value="Submit">'+
+            '</form>'+
+            '<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+
+            infowindow[i] = new google.maps.InfoWindow({
+          		content: contentString[i]+markerId[i]
+        	});
+    }
+
+	for (let i = 0; i < data.length; i++) {
+		marker[i].addListener('click', function() {
+       			infowindow[i].open(myMap, marker[i]);
+    		});
+		
+		
+	}
+  	
 
 	/*
 	infoWindow = new google.maps.InfoWindow;
