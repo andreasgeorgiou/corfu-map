@@ -17,10 +17,8 @@
 
 <ul>
 		<li style="font-size:14px; font-weight: bold;"><a href=""><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
-		<li><a href="">Make Report</a></li>
-		<li><a href="">Help</a></li>
-		<li><a href="">AboutUs</a></li>
 		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></li>
+		<li style="float:right;"><a href="">Make Report</a></li>
 		
 </ul>
 <div id="map-holder"></div>
@@ -34,8 +32,11 @@
 	crossorigin="anonymous"></script>
 <script>
 	var url1 = "{% static 'accounts/dumpster.png' %}";
+	var url1a = "{% static 'accounts/fulldumpster.png' %}";
 	var url2=  "{% static 'accounts/bin.png' %}";
+	var url2a=  "{% static 'accounts/fullbin.png' %}";
 	var url3 = "{% static 'accounts/Recycle.png' %}";
+	var url3a = "{% static 'accounts/fullRecycle.png' %}";
 </script>
 <script src="{% static 'accounts/userEditor.js' %}"></script>
 

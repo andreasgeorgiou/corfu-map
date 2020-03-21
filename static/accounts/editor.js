@@ -136,6 +136,7 @@ function myMap(data) {
 
 	var contentString = new Array(data.length);
 	var infowindow = new Array(data.length);
+
 	for (var i = 0; i < data.length; i++) {
 		if(data[i].full == true){
 			contentString[i] = '<div id="content">'+
@@ -148,8 +149,30 @@ function myMap(data) {
             	'<div id="bodyContent">'+
             '</div>'+
             '</div>';
-        }else{
+        }else if(data[i].broke == true){
 			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            	'</div>'+
+            		'<form action="">'+
+            			'<h4 align="center">Report</h4>'+
+            			'<h6 align="center">Garbage is Broke!</h6>'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+        }else if(data[i].missing == true){
+			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            	'</div>'+
+            		'<form action="">'+
+            			'<h4 align="center">Report</h4>'+
+            			'<h6 align="center">Garbage is Missing!</h6>'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+        }else{
+        	contentString[i] = '<div id="content">'+
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+

@@ -31,8 +31,21 @@ function myMap(data) {
 		anchor: new google.maps.Point(0, 0) // anchor
 	};
 
+	var icon1a = {
+		url: url1a, // url
+		scaledSize: new google.maps.Size(20, 20), // scaled size
+		origin: new google.maps.Point(0,0), // origin
+		anchor: new google.maps.Point(0, 0) // anchor
+	};
+
 	var icon2 = {
 		url: url2, // url
+		scaledSize: new google.maps.Size(20, 20), // scaled size
+		origin: new google.maps.Point(0,0), // origin
+		anchor: new google.maps.Point(0, 0) // anchor
+	};
+	var icon2a = {
+		url: url2a, // url
 		scaledSize: new google.maps.Size(20, 20), // scaled size
 		origin: new google.maps.Point(0,0), // origin
 		anchor: new google.maps.Point(0, 0) // anchor
@@ -40,6 +53,12 @@ function myMap(data) {
 
 	var icon3 = {
 		url: url3, // url
+		scaledSize: new google.maps.Size(20, 20), // scaled size
+		origin: new google.maps.Point(0,0), // origin
+		anchor: new google.maps.Point(0, 0) // anchor
+	};
+	var icon3a = {
+		url: url3a, // url
 		scaledSize: new google.maps.Size(20, 20), // scaled size
 		origin: new google.maps.Point(0,0), // origin
 		anchor: new google.maps.Point(0, 0) // anchor
@@ -53,6 +72,16 @@ function myMap(data) {
 	for (i=0; i<data.length; i++){
 		
 		if (data[i].markertype == "1"){
+			if (data[i].full == true || data[i].broke == true || data[i].missing == true ){
+				var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
+				marker[i] = new google.maps.Marker({
+				data:[],
+				position: myLatLng,
+				map: myMap,
+				//draggable: true,
+				icon:icon1a
+				});
+			}else{
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
 			marker[i] = new google.maps.Marker({
 				data:[],
@@ -60,8 +89,19 @@ function myMap(data) {
 				map: myMap,
 				//draggable: true,
 				icon:icon1
-			});
+				});
+			}
 		}else if (data[i].markertype == "2"){
+			if (data[i].full == true || data[i].broke == true || data[i].missing == true ){
+				var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
+				marker[i] = new google.maps.Marker({
+				data:[],
+				position: myLatLng,
+				map: myMap,
+				//draggable: true,
+				icon:icon2a
+				});
+			}else{
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
 			marker[i] = new google.maps.Marker({
 				data:[],
@@ -69,26 +109,71 @@ function myMap(data) {
 				map: myMap,
 				//draggable: true,
 				icon:icon2
-			});
+				});
+			}
 		}else if (data[i].markertype == "3"){
+			if (data[i].full == true || data[i].broke == true || data[i].missing == true ){
+				var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
+				marker[i] = new google.maps.Marker({
+				data:[],
+				position: myLatLng,
+				map: myMap,
+				//draggable: true,
+				icon:icon3a
+				});
+			}else{
 			var myLatLng = new google.maps.LatLng(data[i].lat, data[i].lng);
-		    marker[i] = new google.maps.Marker({
+			marker[i] = new google.maps.Marker({
 				data:[],
 				position: myLatLng,
 				map: myMap,
 				//draggable: true,
 				icon:icon3
-			});
+				});
+			}
 		}
 		markerId[i]=data[i].id;
-
 	} //end for
 
 	var contentString = new Array(data.length);
 	var infowindow = new Array(data.length);
 	for (var i = 0; i < data.length; i++) {
-		
+
+		if(data[i].full == true){
 			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            	'</div>'+
+            		'<form action="">'+
+            			'<h4 align="center">Report</h4>'+
+            			'<h6 align="center">Garbage is Full!</h6>'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+        }else if(data[i].broke == true){
+			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            	'</div>'+
+            		'<form action="">'+
+            			'<h4 align="center">Report</h4>'+
+            			'<h6 align="center">Garbage is Broke!</h6>'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+        }else if(data[i].missing == true){
+			contentString[i] = '<div id="content">'+
+            '<div id="siteNotice">'+
+            	'</div>'+
+            		'<form action="">'+
+            			'<h4 align="center">Report</h4>'+
+            			'<h6 align="center">Garbage is Missing!</h6>'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
+            '</div>'+
+            '</div>';
+        }else{
+        	contentString[i] = '<div id="content">'+
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="/action_page.php">'+
@@ -105,6 +190,7 @@ function myMap(data) {
             	'<div id="bodyContent">'+
             '</div>'+
             '</div>';
+        }
 
             infowindow[i] = new google.maps.InfoWindow({
           		content: contentString[i]+markerId[i]
