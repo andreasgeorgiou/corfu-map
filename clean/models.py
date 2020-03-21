@@ -15,8 +15,7 @@ class Garbages(models.Model):
 	missing = models.BooleanField(default = False)
 	time = models.TimeField()
 
-	def __str__(self):
-		return self.id
+	
 
 
 class Reports(models.Model):

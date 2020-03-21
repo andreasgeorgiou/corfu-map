@@ -18,8 +18,19 @@
 	
 <ul>
 		<li style="font-size:14px; font-weight: bold;"><a href=""><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> SmartClean Corfu</a></li>
+		<li style="float:right;"><a href="#" onclick="document.getElementById('id01').style.display='block'" >Help</a> 
+		<div id="id01" class="w3-modal">
+			<div class="w3-modal-content">
+				<div class="w3-container">
+					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+					<p>Click on the Garbages to view the report.</p>
+					<p>if you want to report that the Garbage is full or broken or missing you must log in.</p>
+				</div>
+			</div>
+		</div>
 		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/register/">Register</a></li>
 		<li style="float:right"><a right:0; href="http://127.0.0.1:8000/accounts/login/">Login</a></li>
+		
 		
 </ul>
 
@@ -35,8 +46,11 @@
 	crossorigin="anonymous"></script>
 <script>
 	var url1 = "{% static 'accounts/dumpster.png' %}";
+	var url1a = "{% static 'accounts/fulldumpster.png' %}";
 	var url2=  "{% static 'accounts/bin.png' %}";
+	var url2a=  "{% static 'accounts/fullbin.png' %}";
 	var url3 = "{% static 'accounts/Recycle.png' %}";
+	var url3a = "{% static 'accounts/fullRecycle.png' %}";
 </script>
 <script src="{% static 'accounts/editor.js' %}"></script>
 

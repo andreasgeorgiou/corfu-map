@@ -90,18 +90,19 @@ function myMap(data) {
 		
 			contentString[i] = '<div id="content">'+
             '<div id="siteNotice">'+
-            '</div>'+
-            '<form action="/action_page.php">'+
-            '<h6 align="center">Report</h6>'+
-            '<input type="checkbox" id="id" name="id" value="full">'+
-            '<label for="vehicle1"> Garbage is full</label><br>'+
-            '<input type="checkbox" id="vehicle2" name="vehicle2" value="broke">'+
-  			'<label for="vehicle2"> Garbage is Broke</label><br>'+
-            '<input type="checkbox" id="vehicle3" name="vehicle3" value="missing">'+
-  			'<label for="vehicle3"> Garbage is missing</label><br><br>'+
-  			'<input type="submit" value="Submit">'+
-            '</form>'+
-            '<div id="bodyContent">'+
+            	'</div>'+
+            		'<form action="/action_page.php">'+
+            			'<h6 align="center">Report</h6>'+
+            				'<input type="hidden" id="id" name="id" value="'+markerId[i]+'">'+
+            				'<input type="checkbox" id="full" name="full" value="true">'+
+            					'<label for="vehicle1"> Garbage is full</label><br>'+
+            				'<input type="checkbox" id="broke" name="broke" value="true">'+
+  								'<label for="vehicle2"> Garbage is Broke</label><br>'+
+            				'<input type="checkbox" id="missing" name="missing" value="true">'+
+  								'<label for="vehicle3"> Garbage is missing</label><br><br>'+
+  							'<input type="submit" value="Submit">'+
+            		'</form>'+
+            	'<div id="bodyContent">'+
             '</div>'+
             '</div>';
 
