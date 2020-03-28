@@ -1,8 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-	
+	{% load static %}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -12,21 +11,10 @@
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
 
-	<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
-</script>
- <script
+	<script
 	src="http://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>
-<script> 
-	var url1 = "{% static 'accounts/dumpster.png' %}";
-	var url1a = "{% static 'accounts/fulldumpster.png' %}";
-	var url2=  "{% static 'accounts/bin.png' %}";
-	var url2a=  "{% static 'accounts/fullbin.png' %}";
-	var url3 = "{% static 'accounts/Recycle.png' %}";
-	var url3a = "{% static 'accounts/fullRecycle.png' %}";
-</script>
     
 </head>
 <body>
@@ -39,7 +27,18 @@
 </ul>
 <div id="map-holder"></div>
 
+<script>
+	var url1 = "{% static 'accounts/dumpster.png' %}";
+	var url1a = "{% static 'accounts/fulldumpster.png' %}";
+	var url2=  "{% static 'accounts/bin.png' %}";
+	var url2a=  "{% static 'accounts/fullbin.png' %}";
+	var url3 = "{% static 'accounts/Recycle.png' %}";
+	var url3a = "{% static 'accounts/fullRecycle.png' %}";
+</script>
 <script src="{% static 'accounts/userEditor.js' %}"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+</script>
 
 </body>
 </html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>SmartClean</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+	</script>
+	<script src="{% static 'accounts/request.js' %}"></script>
+
+</head>
+<body>
+
+<ul>
+		<li style="font-size:14px; font-weight: bold;"><a href=""><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
+		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></li>
+		
+</ul>
+<h1>Step 1 </h1> 
+<h2> Drag the marker on the trash's location</h2>
+<div id="map-holder"></div>
+<h1>Step 2</h1>
+<h2> Upload image and write description!</h2>
+
+<form action="add_report/" method= "post" enctype="multipart/form-data">
+	{% csrf_token %}	
+	<input type="hidden" id="myLat" name="lat" />
+	<input type="hidden" id="myLng" name="lng" />
+	<label for="img">Select image:</label>
+	<input type="file" id="img" name="img" accept="image/*"> <br><br>
+	<textarea rows="3" cols="50" name="comment" onfocus="clearContents(this);">Description the status here...</textarea> 
+	<input type="submit" value="Send the Request"> 
+</form>
+
+<p id="demo"></p>
+
+</body>
+</html>
