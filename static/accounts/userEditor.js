@@ -66,7 +66,7 @@ function myMap(data) {
 
 	var marker = [];
 	var markerId = [];
-
+	
 	
 
 	for (i=0; i<data.length; i++){
@@ -137,6 +137,8 @@ function myMap(data) {
 
 	var contentString = new Array(data.length);
 	var infowindow = new Array(data.length);
+	var csrf = new Array(data.length);
+
 	for (var i = 0; i < data.length; i++) {
 
 		if(data[i].full == true){
@@ -144,7 +146,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Full!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -155,7 +157,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Broke!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -166,7 +168,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Missing!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -176,26 +178,22 @@ function myMap(data) {
         	contentString[i] = '<div id="content">'+
             '<div id="siteNotice">'+
             	'</div>'+
-            		'<form action="/action_page.php">'+
-            			'<h6 align="center">Report</h6>'+
-            				'<input type="hidden" id="id" name="id" value="'+markerId[i]+'">'+
-            				'<input type="checkbox" id="full" name="full" value="true">'+
-            					'<label for="vehicle1"> Garbage is full</label><br>'+
-            				'<input type="checkbox" id="broke" name="broke" value="true">'+
-  								'<label for="vehicle2"> Garbage is Broke</label><br>'+
-            				'<input type="checkbox" id="missing" name="missing" value="true">'+
-  								'<label for="vehicle3"> Garbage is missing</label><br><br>'+
-  							'<input type="submit" value="Submit">'+
-            		'</form>'+
+            		'<h6 align="center">Report</h6> '+
+            		'<button class="name1"><a href="/full/'+data[i].id+'/">Full</a></button><br>'+
+            		'<button class="name2"><a href="/broke/'+data[i].id+'/">Broke</a></button><br>'+
+            		'<button class="name3"><a href="/missing/'+data[i].id+'/">Missing</a></button><br>'+
             	'<div id="bodyContent">'+
             '</div>'+
             '</div>';
         }
 
             infowindow[i] = new google.maps.InfoWindow({
-          		content: contentString[i]+markerId[i]
+          		content: contentString[i]
         	});
     }
+
+
+
 
 	for (let i = 0; i < data.length; i++) {
 		marker[i].addListener('click', function() {
@@ -230,3 +228,4 @@ function myMap(data) {
         } */ //find the user's location
 
 } //end function
+

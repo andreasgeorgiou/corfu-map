@@ -11,6 +11,22 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+	</script>
+ 	<script
+	src="http://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+	<script>
+	var url1 = "{% static 'accounts/dumpster.png' %}";
+	var url1a = "{% static 'accounts/fulldumpster.png' %}";
+	var url2=  "{% static 'accounts/bin.png' %}";
+	var url2a=  "{% static 'accounts/fullbin.png' %}";
+	var url3 = "{% static 'accounts/Recycle.png' %}";
+	var url3a = "{% static 'accounts/fullRecycle.png' %}";
+	</script>
     
 </head>
 
@@ -23,7 +39,7 @@
 			<div class="w3-modal-content">
 				<div class="w3-container">
 					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-					<p>Click on the Garbages to view the report.</p>
+					<p>Click on the Garbages to view theirs Status.</p>
 					<p>if you want to report that the Garbage is full or broken or missing you must log in.</p>
 				</div>
 			</div>
@@ -36,22 +52,6 @@
 
 <div id="map-holder"></div>
 
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
-</script>
- <script
-	src="http://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
-<script>
-	var url1 = "{% static 'accounts/dumpster.png' %}";
-	var url1a = "{% static 'accounts/fulldumpster.png' %}";
-	var url2=  "{% static 'accounts/bin.png' %}";
-	var url2a=  "{% static 'accounts/fullbin.png' %}";
-	var url3 = "{% static 'accounts/Recycle.png' %}";
-	var url3a = "{% static 'accounts/fullRecycle.png' %}";
-</script>
 <script src="{% static 'accounts/editor.js' %}"></script>
 
 </body>

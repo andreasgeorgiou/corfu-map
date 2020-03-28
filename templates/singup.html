@@ -33,7 +33,21 @@ p.ex3 {
 		<p class="ex3" align="center"> Retype email:{{ form.email2 }}</p>
 		<p class="ex1" align="center"> Password:{{ form.password }}</p>
 		<p align="center"><input type="submit" value="Sing up" ></p>
-		<p align="center">{{form.errors}} </p>
+		{% if form.errors %}
+   			{% for field in form %}
+        		{% for error in field.errors %}
+            		<div align="center" class="alert alert-danger">
+                		<strong>{{ error|escape }}</strong>
+            		</div>
+        		{% endfor %}
+    		{% endfor %}
+    		{% for error in form.non_field_errors %}
+        	<div align="center" class="alert alert-danger">
+            	<strong>{{ error|escape }}</strong>
+        	</div>
+    		{% endfor %}
+		{% endif %}
+		
 	</form>
 		
 

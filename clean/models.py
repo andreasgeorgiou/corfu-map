@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 
-fs = FileSystemStorage(location='/static/photos')
+
 
 
 class Garbages(models.Model):
@@ -19,10 +18,12 @@ class Garbages(models.Model):
 
 
 class Reports(models.Model):
+	
+	username = models.CharField(max_length=50, default='SOME STRING')
 	lat = models.FloatField()
 	lng = models.FloatField()
-	descr = models.CharField(max_length=250, blank=True)
-	image = models.ImageField(storage=fs)
+	descr = models.TextField(blank=True)
+	image = models.ImageField(upload_to='photos')
 
 
 

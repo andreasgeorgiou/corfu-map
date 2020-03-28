@@ -143,7 +143,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Full!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -154,7 +154,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Broke!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -165,7 +165,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is Missing!</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
@@ -176,7 +176,7 @@ function myMap(data) {
             '<div id="siteNotice">'+
             	'</div>'+
             		'<form action="">'+
-            			'<h4 align="center">Report</h4>'+
+            			'<h4 align="center">Status</h4>'+
             			'<h6 align="center">Garbage is empty</h6>'+
             		'</form>'+
             	'<div id="bodyContent">'+
