@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Garbages, Reports
 
+
 class GarbagesSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Garbages
@@ -13,3 +14,4 @@ class ReportsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Reports
 		fields = ('id','username','lat','lng','descr','image')
+

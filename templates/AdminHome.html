@@ -1,9 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>SmartClean Admin</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+
+	<script
+	src="http://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+    
 </head>
 <body>
-	<h1> Admin Page </h1>
+
+<ul>
+		<li style="font-size:14px; font-weight: bold;"><a href="http://127.0.0.1:8000/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
+		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></li>
+		<li style="float:right;"><a href="http://127.0.0.1:8000/viewReports/">View Reports</a></li>
+		<li style="float:right;"><a href="http://127.0.0.1:8000/add/">Add Garbages</a></li>		
+</ul>
+<div id="map-holder"></div>
+
+<script>
+	var url1 = "{% static 'accounts/dumpster.png' %}";
+	var url1a = "{% static 'accounts/fulldumpster.png' %}";
+	var url2=  "{% static 'accounts/bin.png' %}";
+	var url2a=  "{% static 'accounts/fullbin.png' %}";
+	var url3 = "{% static 'accounts/Recycle.png' %}";
+	var url3a = "{% static 'accounts/fullRecycle.png' %}";
+</script>
+<script src="{% static 'accounts/adminEditor.js' %}"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+</script>	
+	
 </body>
-</html>

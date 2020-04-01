@@ -164,16 +164,15 @@ function myMap() {
             	'</div>'+
             	'</div>';
         	}else{
-        		contentString[i] = '<div id="content">'+
-            	'<div id="siteNotice">'+
-            		'</div>'+
-            			'<h6 align="center">Report</h6> '+
-            			'<button class="name1"><a href="/full/'+data[i].id+'/">Full</a></button><br>'+
-            			'<button class="name2"><a href="/broke/'+data[i].id+'/">Broke</a></button><br>'+
-            			'<button class="name3"><a href="/missing/'+data[i].id+'/">Missing</a></button><br>'+
-            		'<div id="bodyContent">'+
-            	'</div>'+
-            	'</div>';
+        		contentString[i] = 
+        		'<div id="content">'+
+        	    	'<h4 align="center">Report:</h4>'+
+        	    		'<div id="">'+
+            				'<center><button class="grayButton"><a href="/full/'+data[i].id+'/">Full</a></button></center><br>'+
+            				'<center><button class="grayButton"><a href="/broke/'+data[i].id+'/">Broke</a></button><br></center><br>'+
+            				'<center><button class="grayButton"><a href="/missing/'+data[i].id+'/">Missing</a></button><br></center><br>'+
+            			'</div>'+
+        	    '</div>';
         	}
 
             infowindow[i] = new google.maps.InfoWindow({

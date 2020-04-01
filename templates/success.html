@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>SmartClean</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<!-- <link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css"> -->
+	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+
+</head>		
+<body>
+{% block content %} 
+	<p>Success! Thank you for your Report</p> 
+	<p>After 5 seconds you will be redirected to the home page</p> 
+	<meta http-equiv="refresh" content="7;url=http://127.0.0.1:8000/home"/> 
+{% endblock %}
+</body>
+</html>
