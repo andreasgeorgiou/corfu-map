@@ -1,8 +1,9 @@
 	
 function myMap() {
-	var url = 'http://127.0.0.1:8000/api/clean/'
+	var url = 'https://app-smartclean.herokuapp.com/api/clean/'
 	var ourRequest = new XMLHttpRequest();
 	ourRequest.open("GET", url);
+
 	ourRequest.onload = function(){
 		console.log(ourRequest.responseText); // Not json formatted
 		var data = JSON.parse(ourRequest.responseText); // from text to json the data
@@ -133,7 +134,8 @@ function myMap() {
 			if(data[i].full == true){
 				contentString[i] = 
 				'<div id="content">'+
-					'<h4 align="center">Status</h4>'+
+					'<h4 align="center">Status:</h4>'+
+					'<h6 align="center">Report by ['+data[i].username+']</h6>'+
             		'<h6 align="center">Garbage is Full!</h6>'+
             			'<div id="">'+
             				'<center><a class="greenButton" href="/empty/'+data[i].id+'/">Empty</a></center><br>'+
@@ -143,7 +145,8 @@ function myMap() {
         	}else if(data[i].broke == true){
 				contentString[i] = 
 				'<div id="content">'+
-        	    	'<h4 align="center">Status</h4>'+
+        	    	'<h4 align="center">Status:</h4>'+
+        	    	'<h6 align="center">Report by ['+data[i].username+']</h6>'+
         	    	'<h6 align="center">Garbage is Broke!</h6>'+
         	    		'<div id="">'+
         	    			'<center><a class="greenButton" href="/fixed/'+data[i].id+'/">Fixed</a></center><br>'+
@@ -153,7 +156,8 @@ function myMap() {
 			}else if(data[i].missing == true){
 				contentString[i] = 
 				'<div id="content">'+
-        	    	'<h4 align="center">Status</h4>'+
+        	    	'<h4 align="center">Status:</h4>'+
+        	    	'<h6 align="center">Report by ['+data[i].username+']</h6>'+
         	    	'<h6 align="center">Garbage is Missing!</h6>'+
         	    		'<div id="">'+
         	    			'<center><a class="greenButton" href="/found/'+data[i].id+'/">Found</a></center><br>'+
@@ -163,7 +167,7 @@ function myMap() {
         	}else{
         		contentString[i] = 
         		'<div id="content">'+
-        	    	'<h4 align="center">Status</h4>'+
+        	    	'<h4 align="center">Status:</h4>'+
         	    		'<div id="">'+
             				'<center><a class="grayButton" href="/full/'+data[i].id+'/">Full</a></center><br>'+
             				'<center><a class="grayButton" href="/broke/'+data[i].id+'/">Broke</a><br></center><br>'+
@@ -185,5 +189,23 @@ function myMap() {
 		}		
 	}
 ourRequest.send();
+
+function checkUpdate() {
+	var data2 = JSON.parse(ourRequest.responseText);
+    $.ajax({
+      url: 'https://app-smartclean.herokuapp.com/api/clean/',
+      type: "GET",
+      timeout: 2000,
+      dataType: "json",
+      
+      success: function(data) {
+      
+        if (JSON.stringify(data) != JSON.stringify(data2)) {
+            location.reload();
+        	}
+		}
+    });
+}	
+setInterval(checkUpdate, 5000);
 
 } //end function

@@ -1,0 +1,36 @@
+<html>
+<style>
+
+#block_container
+{
+    text-align:center;
+}
+#bloc1, #bloc2
+{
+    display:inline;
+}
+
+</style>
+<body>
+
+
+<div id="block_container">
+
+    <div id="bloc1">Check your email! Verify your account.
+    You redirect home after</div>  
+    <div id="bloc2">7</div>
+
+</div>
+
+    <script>
+        setInterval(function() {
+            var div = document.querySelector("#bloc2");
+            var count = div.textContent * 1 - 1;
+            div.textContent = count;
+            if (count <= 0) {
+                window.location.replace("https://app-smartclean.herokuapp.com");
+            }
+        }, 1000);
+    </script>  
+</body>
+</html>

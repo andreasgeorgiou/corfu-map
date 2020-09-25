@@ -1,8 +1,9 @@
 	
 function myMap() {
-	var url = 'http://127.0.0.1:8000/api/clean/'
+	var url = 'https://app-smartclean.herokuapp.com/api/clean/'
 	var ourRequest = new XMLHttpRequest();
 	ourRequest.open("GET", url);
+	
 	ourRequest.onload = function(){
 		console.log(ourRequest.responseText); // Not json formatted
 		var data = JSON.parse(ourRequest.responseText); // from text to json the data
@@ -188,5 +189,22 @@ function myMap() {
 	}
 ourRequest.send();
 
-} //end function
+	function checkUpdate() {
+	var data2 = JSON.parse(ourRequest.responseText);
+    $.ajax({
+      url: 'https://app-smartclean.herokuapp.com/api/clean/',
+      type: "GET",
+      timeout: 2000,
+      dataType: "json",
+      
+      success: function(data) {
+      
+        if (JSON.stringify(data) != JSON.stringify(data2)) {
+            location.reload();
+        	}
+		}
+    });
+}	
+setInterval(checkUpdate, 5000);
 
+} //end function

@@ -19,7 +19,7 @@ def home(request):
 
 @never_cache		
 @login_required
-def request_view(request):
+def UserRequest_view(request):
 	return render(request, "request.html", {})
 
 
@@ -34,11 +34,39 @@ def success_view(request):
 def add_view(request):
 	return render(request, "addGarbage.html", {})
 
+@never_cache
+def verify_view(request):
+	return render(request, "verify.html", {})
+
+@never_cache		
+def thanks_view(request):
+	return render(request, "thanks.html", {})
+
+
+@never_cache		
+@login_required
+def thanks2_view(request):
+	return render(request, "thanks2.html", {})
+
 @never_cache		
 @login_required
 def reports_view(request):
 	if request.user.is_superuser:
 		return render(request, "viewReports.html", {})
+
+@never_cache		
+@login_required
+def request_view(request):
+	if request.user.is_superuser:
+		return render(request, "viewRequest.html", {})
+
+
+@never_cache		
+@login_required
+def requestadd_view(request):
+	return render(request, "requestadd.html", {})
+
+
 
 		
 

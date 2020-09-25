@@ -5,14 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>SmartClean</title>
+    <title>SmartClean Admin</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script
+	src="http://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
     
 </head>
 <body>
@@ -20,49 +23,36 @@
 <ul>
 		<li style="font-size:14px; font-weight: bold;"><a href="https://app-smartclean.herokuapp.com/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
 		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a></li>
-		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a></li>
-    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/request/">Report the rubbish</a></li>
-		
+    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/viewReports/">View Reports</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/add/">Add Garbages</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a></li>
+    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/admin/auth/user/">View the Users</a></li>		
 </ul>
+
 <!-- Mobile nav bar -->
 <div class="topnav">
   <a href="https://app-smartclean.herokuapp.com/home" class="active"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25">Hi {{ user.username }}</a>
   <div id="myLinks">
-    <a href="https://app-smartclean.herokuapp.com/request/">Report the rubbish</a>
-    <a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a>
-    <a href="#about" onclick="closeNavbar()">About us</a>
+    <a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a>
+    <a href="https://app-smartclean.herokuapp.com/viewReports/">View Reports</a>
+    <a href="https://app-smartclean.herokuapp.com/add/" >Add Garbages</a>
+    <a href="https://app-smartclean.herokuapp.com/admin/auth/user/" >View the Users</a>
     <a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
 <br><br><br>
-<div id="title"><center><h1  style="color:#9ED163; font-size:40px;">Report the dumpster or bin!</h1></center></div>
+<div id="title"><center><h1  style="color:#9ED163; font-size:40px;">View the Request from users</h1></center></div>
 <div id="map-holder"></div>
-<p><br></p><br><br><br><br>
-
-<div id ="wrapper2" style="clear:left;">
-  <center><h1 id="work" style="color:#F5F5F5; font-size:40px;">About us</h1></center> 
-  <center><p style="color:#F5F5F5;font-size:15px;"> Η παρούσα διαδικτυακή εφαρμογή δημιουργήθηκε για σκοπούς της πτυχιακής εργασίας, είναι εκπαιδευτικό υλικό.</p>
-  <p style="color:#F5F5F5;font-size:15px;"> This web application was created for the purpose of the dissertation, It is educational material.</p> 
-
-  <a href="#" class="fa fa-facebook"></a>
-  <a href="#" class="fa fa-google"></a>
-  <a href="#" class="fa fa-instagram"></a>
-  <a href="#" class="fa fa-youtube"></a> </center>
-  <center><p style="color:#F5F5F5;font-size:15px;">Copyright © 2020 Andreas Georgiou. All rights reserved.</p> </center>
-</div>
 
 <script>
-	var url1 = "{% static 'accounts/dumpster.png' %}";
-	var url1a = "{% static 'accounts/fulldumpster.png' %}";
-	var url2=  "{% static 'accounts/bin.png' %}";
-	var url2a=  "{% static 'accounts/fullbin.png' %}";
-	var url3 = "{% static 'accounts/Recycle.png' %}";
-	var url3a = "{% static 'accounts/fullRecycle.png' %}";
+  var askIcon = "{% static 'accounts/ask.png' %}";
 </script>
-<script src="{% static 'accounts/userEditor.js' %}"></script>
+
+<script src="{% static 'accounts/viewRequest.js' %}"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
 </script>
@@ -89,6 +79,5 @@ function closeNavbar() {
 }
 </script>
 
-
 </body>
-</html>
+

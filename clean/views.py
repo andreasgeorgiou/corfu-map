@@ -8,8 +8,8 @@ from rest_framework import generics
 
 from django.shortcuts import render,redirect
 from rest_framework import viewsets, permissions
-from .models import Garbages, Reports
-from .serializers import GarbagesSerializer, ReportsSerializer
+from .models import Garbages, Reports, Request
+from .serializers import GarbagesSerializer, ReportsSerializer, RequestSerializer
 from django.contrib.auth.decorators import login_required
 from rest_framework.permissions import (
 	AllowAny,
@@ -26,6 +26,11 @@ class GarbagesView(viewsets.ModelViewSet):
 class ReportsView(viewsets.ModelViewSet):
 	queryset = Reports.objects.all()
 	serializer_class = ReportsSerializer
+
+@permission_classes([IsAdminUser])
+class RequestView(viewsets.ModelViewSet):
+	queryset = Request.objects.all()
+	serializer_class = RequestSerializer
 	
 
 
@@ -34,6 +39,7 @@ def update_full(request, pk):
 	
 	garbage=Garbages.objects.get(id=pk)
 	garbage.full ="True"
+	garbage.username = request.user.username
 	garbage.save()
 
 	return redirect('/home')
@@ -44,6 +50,7 @@ def update_broke(request, pk):
 	
 	garbage=Garbages.objects.get(id=pk)
 	garbage.broke ="True"
+	garbage.username = request.user.username
 	garbage.save()
 	
 	return redirect('/home')
@@ -54,6 +61,7 @@ def update_missing(request, pk):
 	
 	garbage=Garbages.objects.get(id=pk)
 	garbage.missing ="True"
+	garbage.username = request.user.username
 	garbage.save()
 	
 	return redirect('/home')
@@ -119,7 +127,18 @@ def deleteReport(request, pk):
 	if request.user.is_superuser:
 		report=Reports.objects.get(id=pk)
 		report.delete()
-		return redirect('/home')
+		return redirect('/viewReports')
+	else:
+		return HttpResponse('You are not a SuperUser!')
+
+
+
+@login_required
+def deleteRequest(request, pk):
+	if request.user.is_superuser:
+		request=Request.objects.get(id=pk)
+		request.delete()
+		return redirect('/viewRequest')
 	else:
 		return HttpResponse('You are not a SuperUser!')
 
@@ -138,3 +157,17 @@ def add_garbage(request):
 		return redirect('/home')
 	else:
 		return HttpResponse('You are not a SuperUser')
+
+
+@login_required
+def requestadd_garbage(request):
+		if request.method == 'POST':
+			name = request.user.username
+			newlat = request.POST["lat"]
+			newlng = request.POST["lng"]
+			markertype = request.POST["markertype"]
+			newRequest= Request(username=name,lat=newlat,lng=newlng,markertype=markertype)
+			newRequest.save()
+			return redirect('/thanks2')
+		else:
+			return HttpResponse('Something Wrong!')

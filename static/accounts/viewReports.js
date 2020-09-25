@@ -1,8 +1,9 @@
 
 function myMap() {
-	var url = 'http://127.0.0.1:8000/api/reports/'
+	var url = 'https://app-smartclean.herokuapp.com/api/reports/'
 	var ourRequest = new XMLHttpRequest();
 	ourRequest.open("GET", url);
+
 	ourRequest.onload = function(){
 		console.log(ourRequest.responseText); // Not json formatted
 		var data = JSON.parse(ourRequest.responseText); // from text to json the data
@@ -62,5 +63,6 @@ function myMap() {
 		} 
 	}
 ourRequest.send();
+
 
 } //end function

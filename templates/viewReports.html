@@ -10,25 +10,65 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<script
-	src="http://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
     
 </head>
 <body>
 
 <ul>
-		<li style="font-size:14px; font-weight: bold;"><a href="http://127.0.0.1:8000/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
-		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></li>
-		<li style="float:right;"><a href="http://127.0.0.1:8000/add/">Add Garbages</a></li>		
+		<li style="font-size:14px; font-weight: bold;"><a href="https://app-smartclean.herokuapp.com/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/add/">Add Garbages</a></li>
+    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/viewRequest/">View Requests</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a></li>
+    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/admin/auth/user/">View the Users</a></li>		
 </ul>
+
+<!-- Mobile nav bar -->
+<div class="topnav">
+  <a href="https://app-smartclean.herokuapp.com/home" class="active"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25">Hi {{ user.username }}</a>
+  <div id="myLinks">
+    <a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a>
+    <a href="https://app-smartclean.herokuapp.com/add/" >Add Garbages</a>
+    <a href="https://app-smartclean.herokuapp.com/viewRequest/" >View Requests</a>
+    <a href="https://app-smartclean.herokuapp.com/admin/auth/user/" >View the Users</a>
+    <a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<br><br><br>
+<div id="title"><center><h1  style="color:#9ED163; font-size:40px;">View the Reports for trash from users</h1></center></div>
 <div id="map-holder"></div>
 
 <script src="{% static 'accounts/viewReports.js' %}"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+</script>
+
+<!-- script for mobile nav bar -->
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<script>
+function closeNavbar() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
 </script>
 
 </body>

@@ -15,9 +15,11 @@
 </head>		
 <body>
 {% block content %} 
-	<p>Success! Thank you for your Report</p> 
-	<p>After 5 seconds you will be redirected to the home page</p> 
-	<meta http-equiv="refresh" content="7;url=http://127.0.0.1:8000/home"/> 
+	<center><div>
+		<p><img src="{% static 'accounts/success-icon.png' %}" height="25" width="25" > Success! Thank you for your Report</p> 
+		<p>After 5 seconds you will be redirected to the home page</p> 
+		<meta http-equiv="refresh" content="7;url=https://app-smartclean.herokuapp.com/home"/> 
+	</div></center>
 {% endblock %}
 </body>
 </html>

@@ -13,6 +13,7 @@ class Garbages(models.Model):
 	broke = models.BooleanField(default = False)
 	missing = models.BooleanField(default = False)
 	time = models.TimeField()
+	username = models.CharField(blank=True, max_length=50)
 
 	
 
@@ -24,6 +25,15 @@ class Reports(models.Model):
 	lng = models.FloatField()
 	descr = models.TextField(blank=True)
 	image = models.ImageField(upload_to='photos')
+
+
+
+class Request(models.Model):
+	
+	username = models.CharField(max_length=50, default='SOME STRING')
+	lat = models.FloatField()
+	lng = models.FloatField()
+	markertype = models.IntegerField()
 
 
 

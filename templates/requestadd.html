@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	{% load static %}
+	{% load static %}	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -12,15 +12,14 @@
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    
+
 </head>
 <body>
 
 <ul>
 		<li style="font-size:14px; font-weight: bold;"><a href="https://app-smartclean.herokuapp.com/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
 		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a></li>
-		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a></li>
     <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/request/">Report the rubbish</a></li>
 		
 </ul>
@@ -29,7 +28,7 @@
   <a href="https://app-smartclean.herokuapp.com/home" class="active"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25">Hi {{ user.username }}</a>
   <div id="myLinks">
     <a href="https://app-smartclean.herokuapp.com/request/">Report the rubbish</a>
-    <a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a>
+    <a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a>
     <a href="#about" onclick="closeNavbar()">About us</a>
     <a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a>
   </div>
@@ -37,15 +36,51 @@
     <i class="fa fa-bars"></i>
   </a>
 </div>
-<br><br><br>
-<div id="title"><center><h1  style="color:#9ED163; font-size:40px;">Report the dumpster or bin!</h1></center></div>
-<div id="map-holder"></div>
-<p><br></p><br><br><br><br>
 
+<br><br><br>
+
+<center><h2>Request the addition of a new bucket.</h2></center>
+<br>
+
+
+<h2 style="display:inline;">Step 1- </h2><h3 style="display:inline;"> Drag the marker where you feel we need a bucket. </h3>
+
+
+<div id="map-holder"></div>
+
+<script src="{% static 'accounts/requestadd.js' %}"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
+</script>
+
+<br><br><br>
+<h2 style="display:inline;">Step 2- </h2><h3 style="display:inline;"> what kind of bucket do we need there ?</h3>
+
+
+<form action="garbage/" method= "post">
+  {%csrf_token%} 
+  Dumpster: <img src="{% static 'accounts/dumpster.png' %}" alt="dumpster" width="20" height="20">,
+  Bin: <img src="{% static 'accounts/bin.png' %}" alt="bin" width="20" height="20">,
+  Recycle Dump: <img src="{% static 'accounts/Recycle.png' %}" alt="bin" width="20" height="20"><br>
+  <label for="markertype">Choose a garbage type:</label>
+  <select id="markertype" name="markertype">
+    <option>Select:</option>
+    <option  value="1">Dumpster</option>
+    <option  value="2">Bin</option>
+    <option  value="3">Recycle Dumpster</option>
+  </select>
+
+  <input type="hidden" id="myLat" name="lat" />
+  <input type="hidden" id="myLng" name="lng" />
+   
+  <center><input type="submit" value="Send the Request"></center> 
+</form>
+
+<p><br></p><br><br><br><br>
 <div id ="wrapper2" style="clear:left;">
   <center><h1 id="work" style="color:#F5F5F5; font-size:40px;">About us</h1></center> 
-  <center><p style="color:#F5F5F5;font-size:15px;"> Η παρούσα διαδικτυακή εφαρμογή δημιουργήθηκε για σκοπούς της πτυχιακής εργασίας, είναι εκπαιδευτικό υλικό.</p>
-  <p style="color:#F5F5F5;font-size:15px;"> This web application was created for the purpose of the dissertation, It is educational material.</p> 
+  <center><p style="color:#F5F5F5;font-size:15px;"> Η παρούσα διαδικτυακή εφαρμογή δημιουργήθηκε για σκοπούς της πτυχιακής εργασίας, είναι εκπαιδευτικό υλικό.</p> 
+  <p style="color:#F5F5F5;font-size:15px;"> This web application was created for the purpose of the dissertation, It is educational material.</p>
 
   <a href="#" class="fa fa-facebook"></a>
   <a href="#" class="fa fa-google"></a>
@@ -54,18 +89,6 @@
   <center><p style="color:#F5F5F5;font-size:15px;">Copyright © 2020 Andreas Georgiou. All rights reserved.</p> </center>
 </div>
 
-<script>
-	var url1 = "{% static 'accounts/dumpster.png' %}";
-	var url1a = "{% static 'accounts/fulldumpster.png' %}";
-	var url2=  "{% static 'accounts/bin.png' %}";
-	var url2a=  "{% static 'accounts/fullbin.png' %}";
-	var url3 = "{% static 'accounts/Recycle.png' %}";
-	var url3a = "{% static 'accounts/fullRecycle.png' %}";
-</script>
-<script src="{% static 'accounts/userEditor.js' %}"></script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
-</script>
 
 <!-- script for mobile nav bar -->
 <script>
@@ -88,7 +111,6 @@ function closeNavbar() {
   }
 }
 </script>
-
 
 </body>
 </html>

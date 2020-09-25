@@ -1,0 +1,1 @@
+web: gunicorn corfu_map.wsgi 

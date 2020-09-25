@@ -8,6 +8,8 @@ EMAIL_PORT = EMAIL_PORT
 
 
 import os
+import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +24,7 @@ SECRET_KEY = 'o49yl1fjn8b$yk(0ota+14i_ios-#6f=@+!wh+e1#l3k&4a@%x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['app-smartclean.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -129,3 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'clean/media')
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticatedOrReadOnly',)
 }
+
+
+django_heroku.settings(locals())

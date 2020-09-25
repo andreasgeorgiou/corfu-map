@@ -10,17 +10,41 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body>
 
 <ul>
-		<li style="font-size:14px; font-weight: bold;"><a href="http://127.0.0.1:8000/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
-		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></li>
+		<li style="font-size:14px; font-weight: bold;"><a href="https://app-smartclean.herokuapp.com/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> Hi {{ user.username }} </a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a></li>
+		<li style="float:right;"><a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a></li>
+    <li style="float:right;"><a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a></li>
 		
 </ul>
-<h1>Step 1 </h1> 
-<h2> Drag the marker on the trash's location</h2>
+<!-- Mobile nav bar -->
+<div class="topnav">
+  <a href="https://app-smartclean.herokuapp.com/home" class="active"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25">Hi {{ user.username }}</a>
+  <div id="myLinks">
+    <a href="https://app-smartclean.herokuapp.com/requestadd/">Request to add bucket</a>
+    <a href="https://app-smartclean.herokuapp.com/home/">TrashMap</a>
+    <a href="#about" onclick="closeNavbar()">About us</a>
+    <a href="https://app-smartclean.herokuapp.com/accounts/logout/">Logout</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<br><br><br>
+<center><h2> Report where is the neglected rubbish.</h2></center>
+<br>
+
+
+<h2 style="display:inline;">Step 1- </h2><h3 style="display:inline;"> Drag the marker on the rubbish's location </h3>
+
+
 <div id="map-holder"></div>
 
 <script src="{% static 'accounts/request.js' %}"></script>
@@ -28,8 +52,8 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
 </script>
 
-<h1>Step 2</h1>
-<h2> Upload image and write description!</h2>
+<br><br><br>
+<h2 style="display:inline;">Step 2- </h2><h3 style="display:inline;"> Upload image, write description and send the request!</h3>
 
 <form action="add_report/" method= "post" enctype="multipart/form-data">
 	{% csrf_token %}	
@@ -40,6 +64,41 @@
 	<textarea rows="3" cols="50" name="comment" onfocus="clearContents(this);">Description the status here...</textarea> 
 	<input type="submit" value="Send the Request"> 
 </form>
+<p><br></p><br><br><br><br>
+<div id ="wrapper2" style="clear:left;">
+  <center><h1 id="work" style="color:#F5F5F5; font-size:40px;">About us</h1></center> 
+  <center><p style="color:#F5F5F5;font-size:15px;"> Η παρούσα διαδικτυακή εφαρμογή δημιουργήθηκε για σκοπούς της πτυχιακής εργασίας, είναι εκπαιδευτικό υλικό.</p> 
+  <p style="color:#F5F5F5;font-size:15px;"> This web application was created for the purpose of the dissertation, It is educational material.</p>
+
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-google"></a>
+  <a href="#" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-youtube"></a> </center>
+  <center><p style="color:#F5F5F5;font-size:15px;">Copyright © 2020 Andreas Georgiou. All rights reserved.</p> </center>
+</div>
+
+
+<!-- script for mobile nav bar -->
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<script>
+function closeNavbar() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
 
 </body>
 </html>

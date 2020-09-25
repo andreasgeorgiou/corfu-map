@@ -10,31 +10,77 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="{% static 'accounts/styles.css' %}"  rel="stylesheet" type="text/css">
 	<link rel="icon" href="{% static 'accounts/cityclean.png' %}" type="image/gif" sizes="16x16">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
- 	<script
-	src="http://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
 		
 <body>
 <ul>
-		<li style="font-size:14px; font-weight: bold;"><a href="http://127.0.0.1:8000/home"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> SmartClean Corfu</a></li>
-		<li style="float:right;"><a href="#" onclick="document.getElementById('id01').style.display='block'" >Help</a> 
-		<div id="id01" class="w3-modal">
-			<div class="w3-modal-content">
-				<div class="w3-container">
-					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-					<p>Click on the Garbages to view theirs Status.</p>
-					<p>if you want to report that the Garbage is full or broken or missing you must log in.</p>
-				</div>
-			</div>
-		</div>
-		<li style="float:right;"><a href="http://127.0.0.1:8000/accounts/register/">Register</a></li>
-		<li style="float:right"><a right:0; href="http://127.0.0.1:8000/accounts/login/">Login</a></li>		
-</ul>
+	<li style="font-size:14px; font-weight: bold;"><a href="https://app-smartclean.herokuapp.com/"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25"> SmartClean Corfu</a></li> 
+	
+	<li style="float:right;" ><a  href="https://app-smartclean.herokuapp.com/accounts/login/">Login</a></li>	
+	<li><a href="#mapview">TrashMap</a></li>
+	<li><a href="#work">How is work</a></li>
+	<li><a href="#wrapper2">About us</a></li>
+</ul> 
+<!-- Mobile nav bar -->
+<div class="topnav">
+  <a href="https://app-smartclean.herokuapp.com/" class="active"><img src="{% static 'accounts/cityclean.png' %}" width="25" height="25">SmartClean Corfu</a>
+  <div id="myLinks">
+    	<a href="#mapview" onclick="closeNavbar()">TrashMap</a>
+    	<a href="#work" onclick="closeNavbar()">How is work</a>
+    	<a href="#wrapper2" onclick="closeNavbar()">About us</a>
+    	<a href="https://app-smartclean.herokuapp.com/accounts/login/">Login</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<br><br><br><br>
+<div>
+	<center><h1 style="color:#9ED163; font-size:40px;">Why should you help us?</h1></center>
+	<img src="{% static 'accounts/background.png' %}"  width="50%" height="80%" align="left">
+	<center><p style="color: #666666; font-size:20px;top:10%;"><br><br>We give you the opportunity to help us keep your  <br> 																	  					   neighborhood clean! With respect and cooperation, <br>
+																	   between citizens and competent services, we will succeed!<br> 				<br><br>
+
+																   	   A clean city shows how clean its citizens are. We are<br>
+																   	   working to achieve the maximum result for this city.<br>
+																   	   Below is a video explaining the process.</p></center><br>
+
+</div>
+
+<div id ="wrapper" style="clear:left;">
+	<center><h1 id="work" style="color:#F5F5F5; font-size:40px;">How is work</h1></center> 
+	<div id="video-holder">
+		
+		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yok6pTZySDo" frameborder="0";></iframe>
+	</div>
+</div>
+	
+
+
+<br><br><br>
+<div id="mapview"><center><h1  style="color:#9ED163; font-size:40px;">Map with Reports</h1></center></div>
 
 <div id="map-holder"></div>
+<p><br></p><br><br><br><br>
+
+<div id ="wrapper2" style="clear:left;">
+	<center><h1 id="work" style="color:#F5F5F5; font-size:40px;">About us</h1></center> 
+	<center><p style="color:#F5F5F5;font-size:15px;"> Η παρούσα διαδικτυακή εφαρμογή δημιουργήθηκε για σκοπούς της πτυχιακής εργασίας, είναι εκπαιδευτικό υλικό.</p> 
+	<p style="color:#F5F5F5;font-size:15px;"> This web application was created for the purpose of the dissertation, It is educational material.</p>
+
+
+	<a href="#" class="fa fa-facebook"></a>
+	<a href="#" class="fa fa-google"></a>
+	<a href="#" class="fa fa-instagram"></a>
+	<a href="#" class="fa fa-youtube"></a> </center>
+	<center><p style="color:#F5F5F5;font-size:15px;">Copyright © 2020 Andreas Georgiou. All rights reserved.</p> </center>
+</div>
+	
 
 <script>
 	var url1 = "{% static 'accounts/dumpster.png' %}";
@@ -48,6 +94,29 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCh5CMPIA0QLobmOuU-OJsa65KAHHImc&libraries=visualization&callback=myMap">
 </script>
+
+<!-- script for mobile nav bar -->
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<script>
+function closeNavbar() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
 </body>
 </html>
 

@@ -58,7 +58,7 @@ def register_view(request):
 			mail_subject, message, to=[to_email]  
 		)  
 		email.send()  
-		return HttpResponse('Please confirm your email address to complete the registration.<a href="http://127.0.0.1:8000/">Back Home</a> ')  
+		return redirect('/verify')  
 	context = {
 		'form': form,
 	}
@@ -75,7 +75,7 @@ def activate(request, uidb64, token):
 	if user is not None and account_activation_token.check_token(user, token):  
 		user.is_active = True  
 		user.save()  
-		return HttpResponse('Thank you for your email confirmation. Now you can  <a href="http://127.0.0.1:8000/accounts/login/">Login</a>')  
+		return redirect('/thanks')  
 	else:  
 		return HttpResponse('Activation link is invalid!')
 
